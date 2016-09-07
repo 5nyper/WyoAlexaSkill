@@ -7,7 +7,7 @@ var date = new Date();
 
 function getBoysSoccer(when) {
   request("http://www.maxpreps.com/high-schools/wyomissing-spartans-(wyomissing,pa)/football/schedule.htm", function(error, response, body) {
-    var res = body.slice(body.indexOf("<script type='application/ld+json'>") + tag.length);
+    var res = body.slice(body.indexOf(tag) + tag.length);
     var okay = res.slice(0, res.indexOf("</script>"));
     var schedule = JSON.parse(okay);
     for (var i = 0; i<schedule.event.length; i++) {
