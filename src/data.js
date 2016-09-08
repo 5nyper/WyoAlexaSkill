@@ -1,25 +1,29 @@
 var request = require('request');
-var file = require('fs');
 
-var tag = "<script type='application/ld+json'>";
-
-var date = new Date();
+function homeaway(val) {
+    if (val == "h") {
+        return "home";
+    } 
+  	else {
+        return "away";
+    }
+}
 
 function getSportSchedule(sport, when) {
-  request("http://www.maxpreps.com/high-schools/wyomissing-spartans-(wyomissing,pa)/" + sport + "/schedule.htm", function(error, response, body) {
-    var res = body.slice(body.indexOf(tag) + tag.length);
-    var okay = res.slice(0, res.indexOf("</script>"));
-    var schedule = JSON.parse(okay);
-    for (var i = 0; i<schedule.event.length; i++) {
-      if (date.toISOString() > schedule.event[i].StartDate) {
-        continue;
-      }
-      else {
-        console.log(schedule.event[i].Description);
-        break;
-      }
-    }
-  })
+    request("http://schedules.schedulestar.com/cfcs/schedule.cfc?ReturnFormat=json&method=getEventList&x=1473291097435_&sc_id=PA196104084&schedDate=08%2F15%2F2016&current_schedule_view=season&userid=0&genderid=1&levelid=20&sportid=7", function(error, response, body) {
+        var schedule = JSON.parse(body);
+        var currDate = new Date();
+        for (var i = 0; i < schedule.EVENTLIST.length; i++) {
+            var date = new Date(schedule.EVENTLIST[i].EVENTDATE);
+            if (schedule.EVENTLIST[i].OPPONENT_NAME === "" || currDate.toISOString() > date.toISOString()) {
+                continue;
+            } 
+          	else {
+                console.log("Wyomissing will play " + schedule.EVENTLIST[i].OPPONENT_NAME + " " + homeaway(schedule.EVENTLIST[i].HOMEAWAY) + " " + "at " + schedule.EVENTLIST[i].STARTTIME + " on " + schedule.EVENTLIST[i].EVENTDATE);
+                break;
+            }
+        }
+    })
 }
 
 getSportSchedule("soccer");
