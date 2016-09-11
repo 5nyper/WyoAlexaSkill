@@ -1,0 +1,17 @@
+{
+  "intents": [
+    {
+      "intent": "GetScheduleIntent",
+      "slots": [
+        {
+          "name" : "Item",
+          "type": "LIST_OF_SPORTS"
+        },
+        {
+          "name": "Gender",
+          "type": "LIST_OF_GENDERS"
+        }
+        ]
+    }
+  ]
+}
