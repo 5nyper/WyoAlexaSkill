@@ -9,5 +9,6 @@ An Alexa Skill built for Wyomissing
 - [x] finish TODO
 - [x] integrate with Alexa
 - [ ] finish geting all sports links
+- [ ] add more Sample Utterances 
 - [ ] add scores Intent
 - [ ] Live scores?
