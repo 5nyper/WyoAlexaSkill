@@ -105,7 +105,7 @@ exports.handler = function(event, context, callback) {
 };
 
 function homeaway(val) {
-    if (val == "h") {
+    if (val == "H") {
         return "home";
     }
   	else {
