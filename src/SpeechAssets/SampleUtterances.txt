@@ -1,1 +1,4 @@
 GetScheduleIntent whens the next {Gender} {Item} game
+GetScheduleIntent whens the next {Gender} {Item} meet
+GetScheduleIntent when is the next {Gender} {Item} game
+GetScheduleIntent when is the next {Gender} {Item} meet
