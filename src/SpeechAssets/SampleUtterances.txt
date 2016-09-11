@@ -1,0 +1,1 @@
+GetScheduleIntent whens the next {Gender} {Item} game
