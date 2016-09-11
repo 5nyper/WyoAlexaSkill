@@ -127,7 +127,7 @@ var getSportSchedule = function(sportURL, genderid) {
                 continue;
             }
           	else if (schedule.EVENTLIST[i].OPPONENT_NAME !== "" || currDate.toISOString() > date.toISOString()) {
-                result = "Wyomissing will play " + schedule.EVENTLIST[i].OPPONENT_NAME + " " + homeaway(schedule.EVENTLIST[i].HOMEAWAY) + " " + "at " + schedule.EVENTLIST[i].STARTTIME + " on " + schedule.EVENTLIST[i].EVENTDATE;
+                result = "Wyomissing will play " + schedule.EVENTLIST[i].OPPONENT_NAME + " " + homeaway(schedule.EVENTLIST[i].HOMEAWAY) + " " + "at " + schedule.EVENTLIST[i].STARTTIME + " on " + schedule.EVENTLIST[i].EVENTDATE.replace("00:00:00", "");
                 gamesLeft++;
                 break;
             }
