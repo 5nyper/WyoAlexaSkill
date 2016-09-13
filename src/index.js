@@ -3,7 +3,7 @@ var request = require('request');
 var deasync = require('deasync');
 
 const SOCCER = "http://schedules.schedulestar.com/cfcs/schedule.cfc?ReturnFormat=json&method=getEventList&x=1473291097435_&sc_id=PA196104084&schedDate=08%2F15%2F2016&current_schedule_view=season&userid=0&levelid=20&sportid=7"
-const FOOTBALL = "http://schedules.schedulestar.com/cfcs/schedule.cfc?ReturnFormat=json&method=getEventList&x=1473291097435_&sc_id=PA196104084&schedDate=08%2F15%2F2016&current_schedule_view=season&userid=0&genderid=1&levelid=20&sportid=7"
+const FOOTBALL = "http://schedules.schedulestar.com/cfcs/schedule.cfc?ReturnFormat=json&method=getEventList&x=1473776403300_&sc_id=PA196104084&schedDate=08%2F15%2F2016&current_schedule_view=season&userid=0&genderid=1&levelid=1&sportid=4"
 const SWIMMING =  "http://schedules.schedulestar.com/cfcs/schedule.cfc?ReturnFormat=json&method=getEventList&x=1473346320450_&sc_id=PA196104084&schedDate=12%2F18%2F2015&current_schedule_view=season&userid=0&genderid=3&levelid=20&sportid=14"
 const LACROSSE = "http://schedules.schedulestar.com/cfcs/schedule.cfc?ReturnFormat=json&method=getEventList&x=1473346946936_&sc_id=PA196104084&schedDate=02%2F22%2F2016&current_schedule_view=season&userid=0&levelid=20&sportid=15"
 const FIELD_HOCKEY = "http://schedules.schedulestar.com/cfcs/schedule.cfc?ReturnFormat=json&method=getEventList&x=1473347016292_&sc_id=PA196104084&schedDate=08%2F15%2F2016&current_schedule_view=season&userid=0&genderid=2&levelid=20&sportid=10"
@@ -12,6 +12,7 @@ const BASKETBALL = "http://schedules.schedulestar.com/cfcs/schedule.cfc?ReturnFo
 const VOLLEYBALL = "http://schedules.schedulestar.com/cfcs/schedule.cfc?ReturnFormat=json&method=getEventList&x=1473347245140_&sc_id=PA196104084&schedDate=02%2F22%2F2016&current_schedule_view=season&userid=0&levelid=20&sportid=18"
 const TENNIS = "http://schedules.schedulestar.com/cfcs/schedule.cfc?ReturnFormat=json&method=getEventList&x=1473441063577_&sc_id=PA196104084&schedDate=08%2F15%2F2016&current_schedule_view=season&userid=0&levelid=1&sportid=9"
 const WRESTLING = "http://schedules.schedulestar.com/cfcs/schedule.cfc?ReturnFormat=json&method=getEventList&x=1473347409557_&sc_id=PA196104084&schedDate=12%2F18%2F2015&current_schedule_view=season&userid=0&genderid=1&levelid=20&sportid=11"
+const GOLF = "http://schedules.schedulestar.com/cfcs/schedule.cfc?ReturnFormat=json&method=getEventList&x=1473776484001_&sc_id=PA196104084&schedDate=08%2F15%2F2016&current_schedule_view=season&userid=0&genderid=1&levelid=20&sportid=5"
 const BOWLING;
 const BASEBALL;
 const SOFTBALL;
@@ -92,7 +93,10 @@ var handlers = {
             case 'track':
                 this.emit(":tell", getSportSchedule(TRACK, id));
                 break;
-            default:
+            case 'golf':
+                this.emit(":tell", getSportSchedule(GOLF, id));
+                break;
+          default:
                 this.emit(":ask", "What was that again?");
         }
     }
